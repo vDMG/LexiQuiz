@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/img_logo_in_confirm_remove"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:contentDescription="@string/logo"
+        android:src="@drawable/logo_full_lexiquiz" />
+
+    <TextView
+        android:id="@+id/txt_title_in_confirmation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/title_in_confirmation"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/txt_auteur_in_confirmation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/auteur_in_confirmation"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/txt_nbquestion_in_confirmation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/nbquestion_in_confirmation"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btn_confirmation_YES"
+        style="@style/ButtonText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_yellow"
+        android:onClick="supprimer"
+        android:text="@string/confirmationYes" />
+
+</LinearLayout>

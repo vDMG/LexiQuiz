@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">LexiQuiz</string>
+    <string name="action_settings">A propos de</string>
+    <string name="voirLaReponse">Voir la réponse !</string>
+    <string name="hello_world">Hello world !</string>
+    <string name="question">Hello</string>
+    <string name="reponse">Bonjour</string>
+    <string name="langue">Anglais</string>
+    <string name="niveauDeConnaissance">Niveau de connaissance</string>
+    <string name="listquiz_title">Titre</string>
+    <string name="listquiz_description">Description</string>
+    <string name="listquiz_image">Image</string>
+    <string name="logo">Logo_LexiQuiz</string>
+    <string name="title_in_before">Titre</string>
+    <string name="nb_question_in_before">Pourcentage</string>
+    <string name="whatLevel"> A quel point le saviez vous ? </string>
+    <string name="loading"> Chargement des données&#8230; </string>
+    <string name="launch"> Jouer </string>
+    <string name="back">← Retour</string>
+    <string name="next">Suite →</string>
+    <string name="oups">Oups ! Ce quiz est vide !</string>
+    <string name="click_for_create">Créer</string>
+    <string name="click_for_change">Modifier</string>
+    <string name="click_for_remove">Supprimer</string>
+    <string name="go_edit_it">Allez vite le remplir ;)</string>
+    <string name="enter_title">Nom du quiz:</string>
+    <string name="enter_auteur">Nom de son auteur:</string>
+    <string name="submit">Valider</string>
+    <string name="creezvotrequiz"> Créez votre Quiz ! </string>
+    <string name="for_confirmation"> Supprimer ? </string>
+    <string name="confirmationYes"> Supprimer </string>
+    <string name="title_in_confirmation"> Titre: </string>
+    <string name="auteur_in_confirmation"> Auteur: </string>
+    <string name="nbquestion_in_confirmation"> Nombre de questions: </string>
+    <string name="create_question"> Créer une question </string>
+    <string name="modify_question"> Modifier une question </string>
+    <string name="remove_question"> Supprimer une question </string>
+    <string name="Chargement_splashScreen"> Chargement&#8230; </string>
+    <string name="title_activity_before_create_ask">LexiQuiz</string>
+    <string name="hint_for_etxt_title"> Titre du quiz </string>
+    <string name="hint_for_etxt_auteur"> Auteur du quiz </string>
+    <string name="description_in_menu"> Quiz </string>
+    <string name="upload_for_icon"> Charger </string>
+    <string name="modify_quiz">Gérer vos quiz</string>
+    <string name="play_quiz">Jouer !</string>
+    <string name="share_quiz">Partage de quiz</string>
+    <string name="download_quiz">Télécharger</string>
+    <string name="upload_quiz">Partager</string>
+    <string name="forum_quiz">Forum</string>
+    <string name='deleted_quiz'>Le quiz a été supprimé</string>
+    <string name='loading_quiz'>Chargement des quiz partagés</string>
+    <string name='uploading_quiz'>Envoie du quiz</string>
+    <string name='downloading_quiz'>Téléchargement du quiz</string>
+    
+    <style name="ButtonText">
+	    <item name="android:layout_width">fill_parent</item>
+	    <item name="android:layout_height">wrap_content</item>
+	    <item name="android:textColor">#ffffff</item>
+	    <item name="android:gravity">center</item>
+	    <item name="android:layout_margin">3dp</item>
+	    <item name="android:textSize">30sp</item>
+	    <item name="android:textStyle">bold</item>
+	    <item name="android:shadowColor">#000000</item>
+	    <item name="android:shadowDx">1</item>
+	    <item name="android:shadowDy">1</item>
+	    <item name="android:shadowRadius">2</item>
+	</style>
+</resources>

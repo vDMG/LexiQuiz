@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#DDD"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin" >
+
+    <TextView
+        android:id="@+id/txt_titre_simplerow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="@string/langue"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/btn_next_question"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/sk_niveau"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/sk_niveau"
+        android:onClick="next"
+        android:text="@string/next" />
+
+    <SeekBar
+        android:id="@+id/sk_niveau"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_next_question" />
+
+    <TextView
+        android:id="@+id/txt_niveau"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/sk_niveau"
+        android:layout_centerHorizontal="true"
+        android:text="@string/whatLevel" />
+
+    <Button
+        android:id="@+id/btn_answer"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_above="@+id/txt_niveau"
+        android:layout_alignLeft="@+id/sk_niveau"
+        android:background="#663366"
+        android:textColor="#FFF"
+        android:text="@string/voirLaReponse"
+        android:onClick="showAnswer"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btn_ask"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_above="@+id/btn_answer"
+        android:layout_alignLeft="@+id/btn_answer"
+        android:layout_marginBottom="24dp"
+        android:background="#cc0000"
+        android:clickable="false"
+        android:text="@string/question"
+        android:textColor="#FFF"
+        android:textSize="20sp" />
+
+</RelativeLayout>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal|top"
+    android:background="#000"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/title_in_before"
+        android:textColor="#FFF"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageView
+        android:id="@+id/img_icon_quiz_before"
+        android:layout_width="match_parent"
+        android:layout_height="238dp"
+        android:layout_above="@+id/txt_nbquestion"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/txt_title"
+        android:contentDescription="@string/logo"
+        android:src="@drawable/listviewquiz" />
+
+    <TextView
+        android:id="@+id/txt_nbquestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_launch"
+        android:layout_centerHorizontal="true"
+        android:text="@string/nb_question_in_before"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FFF" />
+
+    <Button
+        android:id="@+id/btn_launch"
+        style="@style/ButtonText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/btn_red"
+        android:onClick="lancer"
+        android:text="@string/launch" />
+
+</RelativeLayout>

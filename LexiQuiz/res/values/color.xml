@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--     <color name="blue">#A2B5BF</color> -->
+	<color name="sk_yellow"> #FFBF00 </color>
+	<color name="sk_blue"> #1A1AFF </color>
+	<color name="sk_red"> #FF0015 </color>
+	<color name="le_rouge_du_menu"> #CC0000 </color>
+	<color name="le_bleu_du_menu"> #336699 </color>
+	<color name="le_jaune_du_menu"> #CCCC00 </color>
+	<color name="Grey"> #CECECE </color>
+</resources>

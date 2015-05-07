@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.lexiquiz"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="22" />
+    
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.lexiquiz.SplashScreen"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.PlayBefore"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.Play"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.QuizChoix"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.InsertBack"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.Menu"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.QuizGerer"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.QuizCreate"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.ChangeQuiz"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.QuizRemove"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.QuestionGerer"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.QuestionCreate"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.QuestionChange"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.QuestionRemove"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.QuizModify"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.QuestionModify"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.QuizMenu"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.IconUpload"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.QuizInfo"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.AmisMenu"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.AmisForum"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.AmisDownload"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.AmisUpload"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.AmisUploadAsync"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.AmisUploadConfirmation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.AmisDownloadMenu"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.AmisTriMenu"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.AmisDateMenu"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.Telechargement"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.TriId"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.TriTitre"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lexiquiz.TriAuteur"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
