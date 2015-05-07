@@ -11,6 +11,7 @@ public class AmisDateMenu extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.gerer);
 		Button btn_for_create = (Button) findViewById(R.id.btn_for_create);
