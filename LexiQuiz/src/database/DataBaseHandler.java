@@ -24,10 +24,14 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 	
 	private static final String TABLE_QUIZ = "quiz";
 	private static final String TABLE_QUESTION = "question";
+	private static final String TABLE_CATEGORIE = "categorie";
+	
+	private static final String KEY_CATEGORIE = "categorie";
 	
 	private static final String KEY_ID = "id";
 	private static final String KEY_TITRE = "titre";
 	private static final String KEY_AUTEUR = "auteur";
+	private static final String KEY_ID_CATEGORIE = "idCategorie";
 	private static final String KEY_ICON = "icon";
 
 	private static final String KEY_ID_QUIZ = "idQuiz";
@@ -41,10 +45,14 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 	
 	@Override
 	public void onCreate(SQLiteDatabase db) {
+		db.execSQL("CREATE TABLE " + TABLE_CATEGORIE + "("
+	            + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," 
+	 			+ KEY_CATEGORIE +" TEXT)");
 	 	db.execSQL("CREATE TABLE " + TABLE_QUIZ + "("
 	            + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," 
 				+ KEY_TITRE +" TEXT," 
 	            + KEY_AUTEUR +" TEXT,"
+	            + KEY_ID_CATEGORIE +" INT,"
 	 			+ KEY_ICON +" BLOB)");
 	 	db.execSQL("CREATE TABLE " + TABLE_QUESTION + "("
 	            + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," 
@@ -397,6 +405,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 	    
 	    values.put(KEY_TITRE, quiz.getTitre()); 
 	    values.put(KEY_AUTEUR, quiz.getAuteur());
+	    values.put(KEY_ID_CATEGORIE, quiz.getIdcategorie());
 	    if(quiz.getIcon() == null) values.put(KEY_ICON, quiz.getIcon());
 	    else values.put(KEY_ICON, quiz.getIcon());
 	    
@@ -444,7 +453,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 	public Quiz getQuiz(int id) {
 		SQLiteDatabase db = this.getWritableDatabase();
 	    
-		Cursor cursor = db.query(TABLE_QUIZ, new String[] { KEY_ID, KEY_TITRE, KEY_AUTEUR,
+		Cursor cursor = db.query(TABLE_QUIZ, new String[] { KEY_ID, KEY_TITRE, KEY_AUTEUR, KEY_ID_CATEGORIE,
 	            KEY_ICON}, KEY_ID + "=?", new String[] { String.valueOf(id) }, null, null, null, null);
 	    
 	    if (cursor.getCount() == 0){
@@ -472,7 +481,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 	public Quiz getQuizForUpload(int id) {
 		SQLiteDatabase db = this.getWritableDatabase();
 	    
-		Cursor cursor = db.query(TABLE_QUIZ, new String[] { KEY_ID, KEY_TITRE, KEY_AUTEUR,
+		Cursor cursor = db.query(TABLE_QUIZ, new String[] { KEY_ID, KEY_TITRE, KEY_AUTEUR, KEY_ID_CATEGORIE,
 	            KEY_ICON}, KEY_ID + "=?", new String[] { String.valueOf(id) }, null, null, null, null);
 	    
 	    if (cursor.getCount() == 0){
@@ -524,7 +533,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 	public Quiz getQuizByTitle(String title) {
 		SQLiteDatabase db = this.getWritableDatabase();
 	    
-		Cursor cursor = db.query(TABLE_QUIZ, new String[] { KEY_ID, KEY_TITRE, KEY_AUTEUR,
+		Cursor cursor = db.query(TABLE_QUIZ, new String[] { KEY_ID, KEY_TITRE, KEY_AUTEUR, KEY_ID_CATEGORIE,
 	            KEY_ICON}, KEY_TITRE + "=?", new String[] { String.valueOf(title) }, null, null, null, null);
 	    
 	    if (cursor.getCount() == 0){
@@ -558,11 +567,29 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 	    
 	    values.put(KEY_TITRE, quiz.getTitre());
 	    values.put(KEY_AUTEUR, quiz.getAuteur());
+	    values.put(KEY_ID_CATEGORIE, quiz.getIdcategorie());
 	    values.put(KEY_ICON, quiz.getIcon());
 	    int result = db.update(TABLE_QUIZ, values, KEY_ID + " = ?",
 	            new String[] { String.valueOf(quiz.getId()) });
 		System.out.println("AFTER: " + this.getQuiz(quiz.getId()).toString());
 	    return result;
+	}
+	
+	/**
+	 * Renvoie le pourcentage de connaissances d'un quiz
+	 * @param quiz
+	 * @return int, pourcentage de connaissance d'un quiz
+	 */
+	public double getKnowledgeQuizz(Quiz quiz){
+		
+		double pourcentageRealise;
+        double nbAllquestions = this.countQuestion(quiz.getId(), 0);
+        if(nbAllquestions==0)return -1;
+        double questionsRealisees = this.countQuestion(quiz.getId(), 3);
+        pourcentageRealise = (questionsRealisees / nbAllquestions) * 100;
+        
+        return pourcentageRealise;
+        
 	}
 }
 

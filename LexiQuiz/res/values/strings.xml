@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">LexiQuiz</string>
+    <string name="app_name">Lexiquiz</string>
     <string name="action_settings">A propos de</string>
     <string name="voirLaReponse">Voir la réponse !</string>
     <string name="hello_world">Hello world !</string>
@@ -53,6 +53,10 @@
     <string name='loading_quiz'>Chargement des quiz partagés</string>
     <string name='uploading_quiz'>Envoie du quiz</string>
     <string name='downloading_quiz'>Téléchargement du quiz</string>
+    
+    <!-- ACTION BAR -->
+    <string name ='action_createquiz'>Créer un quiz</string>
+    <string name ='action_downloadquiz'>Télécharger un quiz</string>
     
     <style name="ButtonText">
 	    <item name="android:layout_width">fill_parent</item>

@@ -11,6 +11,7 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import database.Categorie;
 import database.DataBaseHandler;
 import database.Quiz;
  
@@ -39,11 +40,12 @@ public class SplashScreen extends Activity {
         	DataBaseHandler db = new DataBaseHandler(SplashScreen.this);
 			if( db.getAllQuiz(true) == null){
 		    	Log.d("Insert: ", "Inserting quiz..");
-		        Quiz anglais = new Quiz("Anglais", "LexiQuiz");
-		        Quiz allemand = new Quiz("Allemand", "LexiQuiz");
-		        Quiz espagnol = new Quiz("Espagnol", "LexiQuiz");
-		        Quiz portugais = new Quiz("Portugais", "LexiQuiz");
-		        Quiz italien = new Quiz("Italien", "LexiQuiz");
+		    	Categorie categorieLangue = new Categorie (1, "Langues");
+		        Quiz anglais = new Quiz("Anglais", "LexiQuiz", categorieLangue.getId());
+		        Quiz allemand = new Quiz("Allemand", "LexiQuiz", categorieLangue.getId());
+		        Quiz espagnol = new Quiz("Espagnol", "LexiQuiz", categorieLangue.getId());
+		        Quiz portugais = new Quiz("Portugais", "LexiQuiz", categorieLangue.getId());
+		        Quiz italien = new Quiz("Italien", "LexiQuiz", categorieLangue.getId());
 //		        Quiz latin = new Quiz("Latin", "LexiQuiz");
 		        
 		        insertIcon(R.drawable.drapeau_angleterre);

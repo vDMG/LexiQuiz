@@ -44,6 +44,7 @@ public class Play extends Activity {
 	public void ask(){
 		int niveauQuestion;
         
+		//Choix aléatoire du niveau de question
         int hasard = (int) ((Math.random() * 100) + 1);
 		if(hasard <= 70 ) niveauQuestion = 1;
 		else if(hasard <= 95 ) niveauQuestion = 2;

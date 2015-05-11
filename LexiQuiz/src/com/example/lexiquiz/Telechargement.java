@@ -61,6 +61,8 @@ public class Telechargement extends Activity {
         idQuiz = extras.getString("id");
         auteur = extras.getString("auteur");
         titre = extras.getString("titre");
+        
+        
 
     	setButtonAndText();
     	

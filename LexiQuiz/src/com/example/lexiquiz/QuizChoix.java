@@ -11,6 +11,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -26,6 +28,33 @@ public class QuizChoix extends Activity {
 	private List<HashMap<String, Object>> aList = new ArrayList<HashMap<String, Object>>();
 	private DataBaseHandler db = new DataBaseHandler(this);
 	
+	public boolean onCreateOptionsMenu(android.view.Menu menu) {
+	    // Inflate the menu items for use in the action bar
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.main_activity_actions, menu);
+	    return super.onCreateOptionsMenu(menu);
+	}
+	
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle presses on the action bar items
+		Intent intent;
+	    switch (item.getItemId()) {
+	        case R.id.action_createquiz:
+	            System.out.println("createquiz");
+	            intent = new Intent(getApplicationContext(), QuizCreate.class);
+	            startActivity(intent);
+	            return true;
+	        case R.id.action_downloadquiz:
+	            System.out.println("downloadquiz");
+	            intent = new Intent(getApplicationContext(), AmisDownload.class);
+	            intent.putExtra("type", "get.php");
+	        	startActivity(intent);
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,12 +62,17 @@ public class QuizChoix extends Activity {
 		
 		SimpleAdapter adapter = null;
 		
+		java.text.DecimalFormat df = new java.text.DecimalFormat("0.##");
+		
 		List<Quiz> all = db.getAllQuiz(true);
 		if(all != null){
 			for (Quiz quiz : all) {
 				HashMap<String, Object> hm = new HashMap<String, Object>();
-				hm.put("titre", "Titre : " + quiz.getTitre());
-				hm.put("auteur", "Auteur : " + quiz.getAuteur());
+				hm.put("titre", quiz.getTitre());
+				hm.put("auteur", quiz.getAuteur());
+				double knowledgeLevel = db.getKnowledgeQuizz(quiz);
+				if(knowledgeLevel==-1) hm.put("knowledgeLevel","(Aucune question)");
+				else hm.put("knowledgeLevel", df.format(db.getKnowledgeQuizz(quiz))+"%");
 				
 				Bitmap bitMapImage = BitmapFactory.decodeByteArray(
 						quiz.getIcon(), 0,
@@ -49,8 +83,8 @@ public class QuizChoix extends Activity {
 				hm.put("id", "" + quiz.getId());
 				aList.add(hm);
 			}
-			String[] from = { "img", "titre", "auteur" };
-			int[] to = { R.id.img_icon, R.id.txt_titre_simplerow, R.id.txt_auteur_simplerow };
+			String[] from = { "img", "titre", "auteur", "knowledgeLevel"};
+			int[] to = { R.id.img_icon, R.id.txt_titre_simplerow, R.id.txt_auteur_simplerow , R.id.txt_knowledgeLevel_simplerow};
 			adapter = new SimpleAdapter(getBaseContext(), aList, R.layout.simplerow, from, to);
 			adapter.setViewBinder(new SimpleAdapter.ViewBinder() {
 
@@ -79,4 +113,5 @@ public class QuizChoix extends Activity {
 			listQuiz.setOnItemClickListener(itemClickListener);
 		}
 	}
+	
 }

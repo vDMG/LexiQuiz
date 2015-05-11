@@ -5,11 +5,13 @@ public class Quiz {
 		private int id;
 		private String titre;
 		private String auteur;
+		private int idcategorie;
 		private byte[] icon;
 		
-		public Quiz(String titre, String auteur) {
+		public Quiz(String titre, String auteur, int idcategorie) {
 			this.titre = titre;
 			this.auteur = auteur;
+			this.idcategorie = idcategorie;		
 		}
 
 		public String toString(){
@@ -47,4 +49,13 @@ public class Quiz {
 		public void setIcon(byte[] imageInByte) {
 			this.icon = imageInByte;
 		}
+
+		public int getIdcategorie() {
+			return idcategorie;
+		}
+
+		public void setIdcategorie(int idcategorie) {
+			this.idcategorie = idcategorie;
+		}
+		
 	}

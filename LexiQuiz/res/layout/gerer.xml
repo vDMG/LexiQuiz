@@ -31,6 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="84dp"
         android:layout_marginLeft="62dp"
+        android:layout_marginStart="62dp"
         android:background="@drawable/btn_blue"
         android:onClick="lancerModif"
         android:text="@string/click_for_change" />
