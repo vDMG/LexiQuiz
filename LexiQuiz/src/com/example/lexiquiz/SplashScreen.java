@@ -2,7 +2,11 @@ package com.example.lexiquiz;
 
 import java.io.ByteArrayOutputStream;
 
+import com.example.lexiquiz.R.string;
+
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -17,21 +21,34 @@ import database.Quiz;
  
 public class SplashScreen extends Activity {
 	
+	ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
-        new PrefetchData().execute(); 
+        PrefetchData prefetch = new PrefetchData(this); 
+        prefetch.execute();
     }
  
     private class PrefetchData extends AsyncTask<Void, Void, Void> {
     	
     	private byte[] icon;
+    	
+    	public PrefetchData(Context context){
+
+			progressDialog = new ProgressDialog(context, ProgressDialog.THEME_HOLO_DARK);
+    	}
  
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            
+			progressDialog.setMessage(getString(string.info_loading_quiz));
+			progressDialog.setIndeterminate(false);
+			progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+			progressDialog.setCancelable(false);
+			progressDialog.show();
         }
  
         @Override
@@ -41,6 +58,8 @@ public class SplashScreen extends Activity {
 			if( db.getAllQuiz(true) == null){
 		    	Log.d("Insert: ", "Inserting quiz..");
 		    	Categorie categorieLangue = new Categorie (1, "Langues");
+		    	db.addCategorie(categorieLangue);
+		    	
 		        Quiz anglais = new Quiz("Anglais", "LexiQuiz", categorieLangue.getId());
 		        Quiz allemand = new Quiz("Allemand", "LexiQuiz", categorieLangue.getId());
 		        Quiz espagnol = new Quiz("Espagnol", "LexiQuiz", categorieLangue.getId());
@@ -72,7 +91,7 @@ public class SplashScreen extends Activity {
 		    	db.addQuiz(portugais);
 		    	db.addQuiz(italien);
 //		    	db.addQuiz(latin);
-
+		    	//progressDialog.setMessage(getString(string.info_insertion_quiz));
 //		    	db.insertList_Questions(6, db.readCsv(SplashScreen.this, "latin.csv"), 1, false); // Fonctionne sauf encodages
 		        db.insertList_Questions(1, db.readCsv(SplashScreen.this, "anglais.csv"), 1, true);
 		        db.insertList_Questions(1, db.readCsv(SplashScreen.this, "verbes-irreguliers-anglais.csv"), 1, false);
@@ -94,6 +113,7 @@ public class SplashScreen extends Activity {
  
         @Override
         protected void onPostExecute(Void result) {
+        	progressDialog.dismiss();
             super.onPostExecute(result);
             Intent i = new Intent(SplashScreen.this, Menu.class);
             startActivity(i);

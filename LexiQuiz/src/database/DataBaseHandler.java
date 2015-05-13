@@ -593,5 +593,34 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         return pourcentageRealise;
         
 	}
+	
+	public Categorie getCategorie (int idCategorie){
+		SQLiteDatabase db = this.getReadableDatabase();
+		
+		Cursor cursor = db.query(TABLE_CATEGORIE, new String[] { KEY_CATEGORIE}, KEY_ID + "=?", new String[] { String.valueOf(idCategorie) }, null, null, null, null);
+	    
+	    if (cursor.getCount() == 0){
+	    	cursor.close();
+	    	return null;
+	    }
+	    
+	    cursor.moveToFirst();
+	    Categorie categorie = new Categorie(idCategorie,cursor.getString(0));
+		
+		cursor.close();
+		return categorie;
+	}
+	
+	public int addCategorie(Categorie categorie){
+		SQLiteDatabase db = this.getReadableDatabase();
+		
+		ContentValues values = new ContentValues();
+	    
+	    values.put(KEY_ID, categorie.getId()); 
+	    values.put(KEY_CATEGORIE, categorie.getCategorie());
+	    
+	    return (int) db.insert(TABLE_CATEGORIE, null, values);
+		
+	}
 }
 

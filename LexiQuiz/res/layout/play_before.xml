@@ -11,7 +11,7 @@
         android:layout_margin="10dp"
         android:orientation="horizontal">
         
-        <ImageButton
+        <ImageView
             android:id="@+id/img_icon_quiz_before"
             android:layout_width="150dp"
             android:layout_height="150dp"
@@ -19,12 +19,12 @@
             android:layout_margin="5dp"
             android:background="@drawable/imagebutton_oval"
             android:contentDescription="@string/logo" 
-            android:src="@drawable/ic_collections_white_24dp"
-            android:onClick="upload"/>
+            android:src="@drawable/ic_collections_white_24dp"/>
         
-        <LinearLayout 
-            
-              android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
             
             <TextView
             android:id="@+id/textView1"
@@ -38,7 +38,7 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-           
+            android:textStyle="bold"
             android:layout_margin="5dp"
             android:singleLine="false"
             android:text="@string/info_quiz_author" />

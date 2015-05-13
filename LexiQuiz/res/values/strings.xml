@@ -62,6 +62,11 @@
     	<!-- Avant le lancement d'un quiz -->
     	<string name='info_quiz_description'>(Aucune description)</string>
     	<string name='info_quiz_author'>(Aucun auteur)</string>
+    	
+    <!-- PROGRESSBAR -->
+    	<!-- SplashScreen -->
+    	<string name='info_loading_quiz'>Création des quiz</string>
+    	<string name='info_insertion_quiz'>Insertion des éléments de quiz</string>
     
     <!-- TOAST -->
     	<!-- Création d'un quiz -->

@@ -34,6 +34,7 @@ public class QuizChoix extends Activity {
 
 	private List<HashMap<String, Object>> aList = new ArrayList<HashMap<String, Object>>();
 	private DataBaseHandler db = new DataBaseHandler(this);
+	private ImageView img_icon;
 	
 	public boolean onCreateOptionsMenu(android.view.Menu menu) {
 	    // Inflate the menu items for use in the action bar
@@ -68,7 +69,12 @@ public class QuizChoix extends Activity {
 		setContentView(R.layout.quiz_choix);
 		
 		setTitle("Liste des Lexiquiz");
+		initiateVariable();
+		loadingView();
 		
+	}
+	
+	private void loadingView() {
 		SimpleAdapter adapter = null;
 		
 		java.text.DecimalFormat df = new java.text.DecimalFormat("0.##");
@@ -83,11 +89,14 @@ public class QuizChoix extends Activity {
 				if(knowledgeLevel==-1) hm.put("knowledgeLevel","(Aucune question)");
 				else hm.put("knowledgeLevel", df.format(db.getKnowledgeQuizz(quiz))+"%");
 				
-				Bitmap bitMapImage = BitmapFactory.decodeByteArray(
-						quiz.getIcon(), 0,
-						quiz.getIcon().length);
 				
-				BitmapDrawable img = new BitmapDrawable(getResources(), getRoundedCornerBitmap(bitMapImage));
+				
+				Bitmap pq=Bitmap.createScaledBitmap(BitmapFactory.decodeByteArray(
+						quiz.getIcon(), 0,
+						quiz.getIcon().length), 
+					    70, 70, true);
+				
+				BitmapDrawable img = new BitmapDrawable(getResources(), getRoundedCornerBitmap(pq));
 				
 				hm.put("img", img);				
 				
@@ -123,8 +132,13 @@ public class QuizChoix extends Activity {
 			};
 			listQuiz.setOnItemClickListener(itemClickListener);
 		}
+		
 	}
-	
+
+	private void initiateVariable() {
+		img_icon = (ImageView) findViewById(R.id.img_icon);		
+	}
+
 	public static Bitmap getRoundedCornerBitmap(Bitmap bitmap) {
 	    Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap
 	            .getHeight(), Config.ARGB_8888);

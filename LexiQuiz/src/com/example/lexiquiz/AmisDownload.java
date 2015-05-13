@@ -139,9 +139,9 @@ public class AmisDownload extends Activity {
 		if(jsonResult == null){
 			setContentView(R.layout.play_before);
 			View img_icon_quiz_before = findViewById(R.id.img_icon_quiz_before);
-			TextView txt_nbquestion = (TextView) findViewById(R.id.txt_nbquestion);
+			//TextView txt_nbquestion = (TextView) findViewById(R.id.txt_nbquestion);
 			img_icon_quiz_before.setVisibility(View.INVISIBLE);
-			txt_nbquestion.setVisibility(View.INVISIBLE);
+			//txt_nbquestion.setVisibility(View.INVISIBLE);
 			
 			//TextView txt_title = (TextView) findViewById(R.id.txt_title);
 			//txt_title.setText("Necessite une connection internet !");
@@ -149,9 +149,9 @@ public class AmisDownload extends Activity {
 		else if(jsonResult.length() == 0 || jsonResult.equals("[]")){
 			setContentView(R.layout.play_before);
 			View img_icon_quiz_before = findViewById(R.id.img_icon_quiz_before);
-			TextView txt_nbquestion = (TextView) findViewById(R.id.txt_nbquestion);
+			//TextView txt_nbquestion = (TextView) findViewById(R.id.txt_nbquestion);
 			img_icon_quiz_before.setVisibility(View.INVISIBLE);
-			txt_nbquestion.setVisibility(View.INVISIBLE);
+			//txt_nbquestion.setVisibility(View.INVISIBLE);
 			
 			//TextView txt_title = (TextView) findViewById(R.id.txt_title);
 			//txt_title.setText("Aucun résultat");

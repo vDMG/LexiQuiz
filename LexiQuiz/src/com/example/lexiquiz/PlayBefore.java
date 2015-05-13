@@ -3,64 +3,76 @@ package com.example.lexiquiz;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.graphics.Bitmap.Config;
-import android.graphics.PorterDuff.Mode;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+import database.Categorie;
 import database.DataBaseHandler;
+import database.Quiz;
 
 public class PlayBefore extends Activity{
 	
-	private int idQuiz;
+	private static Quiz quiz;
 	private DataBaseHandler db = new DataBaseHandler(this);
-	private TextView txt_nbquestion;
+	private TextView textview_description;
+	private TextView textview_author;
     private ImageView img_icon;
+    
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus){
+    	
+    	Bundle extras = getIntent().getExtras();
+    	Quiz quiz = this.db.getQuiz(Integer.parseInt(extras.getString("id")));
+    	img_icon = (ImageView) findViewById(R.id.img_icon_quiz_before);
+    	
+        Bitmap pq=Bitmap.createScaledBitmap(BitmapFactory.decodeByteArray(quiz.getIcon(), 0,
+        		quiz.getIcon().length), 
+				img_icon.getWidth(), img_icon.getHeight(), true);
+        
+        img_icon.setImageBitmap(getRoundedCornerBitmap(pq));
+    }
 	
-	protected void onCreate(Bundle savedInstanceState) {
+    
+ 	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle extras = getIntent().getExtras();
         setContentView(R.layout.play_before);
         
-        this.idQuiz = Integer.parseInt(extras.getString("id"));
-        setTitle(this.db.getQuiz(this.idQuiz).getTitre());
+        Quiz quiz = this.db.getQuiz(Integer.parseInt(extras.getString("id")));
+        Categorie categorie = this.db.getCategorie(quiz.getIdcategorie());
         
+        setTitle(quiz.getTitre());
         setButtonAndText();
-
+        textview_author.setText(quiz.getAuteur());
+        textview_description.setText(categorie.getCategorie());
         
-        if(this.db.getQuiz(this.idQuiz).getIcon().equals("uneImage")){
-        	
-        }
-        else{
-            Bitmap bitMapImage = BitmapFactory.decodeByteArray(
-            		this.db.getQuiz(this.idQuiz).getIcon(), 0,
-            		this.db.getQuiz(this.idQuiz).getIcon().length);
-            
-            img_icon.setImageBitmap(getRoundedCornerBitmap(bitMapImage));
-        }
+
 
         double pourcentageRealise;
-        double allquestions = this.db.countQuestion(this.idQuiz, 0);
-        double questionsRealisees = this.db.countQuestion(this.idQuiz, 3);
+        double allquestions = this.db.countQuestion(quiz.getId(), 0);
+        double questionsRealisees = this.db.countQuestion(quiz.getId(), 3);
         
-        if(allquestions == 0){
-            txt_nbquestion.setText("Oups ! Ce quiz ne contient aucune question !");
+        /*if(allquestions == 0){
+            textview_description.setText("Oups ! Ce quiz ne contient aucune question !");
         }
-        else if(questionsRealisees == 0) txt_nbquestion.setText("0% acquis");
-        else if(allquestions == questionsRealisees) txt_nbquestion.setText("100% acquis");        
+        else if(questionsRealisees == 0) textview_description.setText("0% acquis");
+        else if(allquestions == questionsRealisees) textview_description.setText("100% acquis");        
         else{
         	pourcentageRealise = (questionsRealisees / allquestions) * 100;
             java.text.DecimalFormat df = new java.text.DecimalFormat("0.##");        
-            txt_nbquestion.setText(df.format(pourcentageRealise) + "% connaissances acquises");
-        }
+            textview_description.setText(df.format(pourcentageRealise) + "% connaissances acquises");
+        }*/
+        
+
         
     }
 
@@ -71,7 +83,7 @@ public class PlayBefore extends Activity{
 	public void lancer(View view){
     	this.db.close();
     	Intent intent = new Intent(getApplicationContext(), Play.class);
-        intent.putExtra("id", Integer.toString(this.idQuiz));
+        intent.putExtra("id", Integer.toString(quiz.getId()));
         startActivity(intent);
 	}
 		
@@ -80,8 +92,9 @@ public class PlayBefore extends Activity{
 	 * Appelee des la creation de PlayBefore.
 	 */
 	public void setButtonAndText(){
-        txt_nbquestion = (TextView) findViewById(R.id.textView1);
-        img_icon = (ImageView) findViewById(R.id.img_icon_quiz_before);
+        textview_description = (TextView) findViewById(R.id.textView1);
+        textview_author = (TextView) findViewById(R.id.textView2);
+        
 	}
 	
 	public Bitmap getRoundedCornerBitmap(Bitmap bitmap) {
@@ -90,11 +103,10 @@ public class PlayBefore extends Activity{
 
 	    final int color = 0xff4242DB;
 	    final Paint paint = new Paint();
-	    Toast.makeText(getApplicationContext(), Integer.toString(bitmap.getHeight())+"/"+Integer.toString(bitmap.getWidth()),
-				Toast.LENGTH_LONG).show();
+	    
 	    final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
 	    final RectF rectF = new RectF(rect);
-	    final float roundPx = 200;
+	    final float roundPx = bitmap.getWidth()/2;
 
 	    paint.setAntiAlias(true);
 	    canvas.drawARGB(0, 0, 0, 0);

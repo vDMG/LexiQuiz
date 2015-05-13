@@ -87,13 +87,12 @@ public class QuizCreate extends Activity {
 	 */
 	public void creation(){
 		Intent intent;
-		this.quiz = new Quiz(etxt_for_title.getText().toString(), etxt_for_auteur.getText().toString());
+		this.quiz = new Quiz(etxt_for_title.getText().toString(), etxt_for_auteur.getText().toString(),1);
 
 		String titre = etxt_for_title.getText().toString();
 		if(this.db.getQuizByTitle(titre) == null){
 			if(picturePath!=null){
-				Drawable d = icon_quiz.getBackground();
-	//            BitmapDrawable bitDw = ((BitmapDrawable) d);
+				//            BitmapDrawable bitDw = ((BitmapDrawable) d);
 	//            Bitmap bitmap = bitDw.getBitmap();
 	            Bitmap bitmap = BitmapFactory.decodeFile(picturePath);
 	            ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -145,7 +144,7 @@ public class QuizCreate extends Activity {
 	 */
 	public void back(View view){
 		this.db.close();
-		Intent intent = new Intent(getApplicationContext(), QuizGerer.class);
+		Intent intent = new Intent(getApplicationContext(), QuizChoix.class);
 		startActivity(intent);
 	}
 
@@ -181,6 +180,7 @@ public class QuizCreate extends Activity {
 			int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
 			picturePath = cursor.getString(columnIndex);
 			cursor.close();
+			
 			Bitmap pq=Bitmap.createScaledBitmap(BitmapFactory.decodeFile(picturePath), 
 					icon_quiz.getWidth(), icon_quiz.getHeight(), true);
 		    
