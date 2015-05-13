@@ -64,6 +64,6 @@ public class QuestionCreate extends Activity {
 	public void setButtonAndText(){
 	    etxt_for_enonce = (EditText) findViewById(R.id.etxt_for_title);
 	    etxt_for_reponse = (EditText) findViewById(R.id.etxt_for_auteur);
-	    txt_creez_votre_quiz = (TextView) findViewById(R.id.txt_creez_votre_quiz);
+	    //txt_creez_votre_quiz = (TextView) findViewById(R.id.txt_creez_votre_quiz);
 	}
 }

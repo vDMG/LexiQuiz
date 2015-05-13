@@ -67,6 +67,7 @@ public class IconUpload extends Activity {
 	            String picturePath = cursor.getString(columnIndex);
 	            cursor.close();
 	            img_icon_in_icon_upload.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+	            
 //	            Drawable d = img_icon_in_icon_upload.getBackground();
 //	            BitmapDrawable bitDw = ((BitmapDrawable) d);
 //	            Bitmap bitmap = bitDw.getBitmap();

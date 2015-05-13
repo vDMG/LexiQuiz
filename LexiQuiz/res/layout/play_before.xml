@@ -1,50 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal|top"
-    android:background="#000"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:layout_margin="15dp">
 
-    <TextView
-        android:id="@+id/txt_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/title_in_before"
-        android:textColor="#FFF"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <ImageView
-        android:id="@+id/img_icon_quiz_before"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="238dp"
-        android:layout_above="@+id/txt_nbquestion"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/txt_title"
-        android:contentDescription="@string/logo"
-        android:src="@drawable/listviewquiz" />
+        android:layout_height="wrap_content" 
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+        
+        <ImageButton
+            android:id="@+id/img_icon_quiz_before"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="start"
+            android:layout_margin="5dp"
+            android:background="@drawable/imagebutton_oval"
+            android:contentDescription="@string/logo" 
+            android:src="@drawable/ic_collections_white_24dp"
+            android:onClick="upload"/>
+        
+        <LinearLayout 
+            
+              android:orientation="vertical">
+            
+            <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_margin="5dp"
+            android:singleLine="false"
+            android:text="@string/info_quiz_description" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           
+            android:layout_margin="5dp"
+            android:singleLine="false"
+            android:text="@string/info_quiz_author" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/txt_nbquestion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_launch"
-        android:layout_centerHorizontal="true"
-        android:text="@string/nb_question_in_before"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#FFF" />
+        
+        
+    </LinearLayout>
+    
+    
 
-    <Button
-        android:id="@+id/btn_launch"
-        style="@style/ButtonText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/btn_red"
-        android:onClick="lancer"
-        android:text="@string/launch" />
-
-</RelativeLayout>
+</LinearLayout>

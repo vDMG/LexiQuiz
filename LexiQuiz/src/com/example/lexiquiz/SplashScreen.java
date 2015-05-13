@@ -95,7 +95,6 @@ public class SplashScreen extends Activity {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-           ;
             Intent i = new Intent(SplashScreen.this, Menu.class);
             startActivity(i);
             finish();

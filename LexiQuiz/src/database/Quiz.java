@@ -8,6 +8,38 @@ public class Quiz {
 		private int idcategorie;
 		private byte[] icon;
 		
+		
+		public Quiz(int id, String titre, String auteur, int idcategorie,
+				byte[] icon) {
+			super();
+			this.id = id;
+			this.titre = titre;
+			this.auteur = auteur;
+			this.idcategorie = idcategorie;
+			this.icon = icon;
+		}
+
+		public Quiz(String titre, String auteur) {
+			super();
+			this.titre = titre;
+			this.auteur = auteur;
+		}
+
+		public Quiz(int id, String titre, String auteur) {
+			super();
+			this.id = id;
+			this.titre = titre;
+			this.auteur = auteur;
+		}
+
+		public Quiz(int id, String titre, String auteur, byte[] icon) {
+			super();
+			this.id = id;
+			this.titre = titre;
+			this.auteur = auteur;
+			this.icon = icon;
+		}
+
 		public Quiz(String titre, String auteur, int idcategorie) {
 			this.titre = titre;
 			this.auteur = auteur;

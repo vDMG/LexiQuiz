@@ -423,7 +423,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 		String selectQuery;
 		
 		if(tous == true) selectQuery = "SELECT  * FROM " + TABLE_QUIZ;
-		else selectQuery = "SELECT  * FROM " + TABLE_QUIZ + " WHERE " + KEY_AUTEUR + " IS NOT 'LexiQuiz'";
+		else selectQuery = "SELECT * FROM " + TABLE_QUIZ + " WHERE " + KEY_AUTEUR + " IS NOT 'LexiQuiz'";
 
 		Cursor cursor = db.rawQuery(selectQuery, null);	
 		
@@ -433,11 +433,10 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 		}
 		if (cursor.moveToFirst()) {
 			do {
-				String titre = cursor.getString(1); 
-				String auteur = cursor.getString(2);
-				Quiz quiz = new Quiz(titre, auteur);
-				quiz.setId(Integer.parseInt(cursor.getString(0)));
-				quiz.setIcon(cursor.getBlob(3));
+				System.out.println("ERREUR : "+cursor.toString());
+				Quiz quiz = new Quiz(Integer.parseInt(cursor.getString(0)), cursor.getString(1), 
+						cursor.getString(2), cursor.getInt(3), cursor.getBlob(4));
+			
 				quizList.add(quiz);
 			} while (cursor.moveToNext());
 		}
@@ -464,10 +463,11 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 	    cursor.moveToFirst();
 	    String titre = cursor.getString(1); 
 		String auteur = cursor.getString(2);
+		int idcategorie = cursor.getInt(3);
 	 
-		Quiz quiz = new Quiz(titre, auteur);	
+		Quiz quiz = new Quiz(titre, auteur, idcategorie);	
 		quiz.setId(Integer.parseInt(cursor.getString(0)));
-		quiz.setIcon(cursor.getBlob(3));
+		quiz.setIcon(cursor.getBlob(4));
 		
 		cursor.close();
 		return quiz;
@@ -492,10 +492,11 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 	    cursor.moveToFirst();
 	    String titre = cursor.getString(1); 
 		String auteur = cursor.getString(2);
-	 
-		Quiz quiz = new Quiz(titre, auteur);	
+		int idcategorie = cursor.getInt(3);
+		 
+		Quiz quiz = new Quiz(titre, auteur, idcategorie);	
 		quiz.setId(Integer.parseInt(cursor.getString(0)));
-		quiz.setIcon(cursor.getBlob(3));
+		quiz.setIcon(cursor.getBlob(4));
 		
 		String tmpTitre = quiz.getTitre();
 		String tmpAuteur = quiz.getAuteur();
@@ -544,11 +545,12 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 	    cursor.moveToFirst();
 	    String titre = cursor.getString(1); 
 		String auteur = cursor.getString(2);
-	    
-		Quiz quiz = new Quiz(titre, auteur);
+		int idcategorie = cursor.getInt(3);
+		 
+		Quiz quiz = new Quiz(titre, auteur, idcategorie);
 		
 		quiz.setId(Integer.parseInt(cursor.getString(0)));
-		quiz.setIcon(cursor.getBlob(3));
+		quiz.setIcon(cursor.getBlob(4));
 		
 		cursor.close();
 		return quiz;

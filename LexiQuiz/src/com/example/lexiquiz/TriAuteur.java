@@ -18,13 +18,13 @@ public class TriAuteur extends Activity {
 		setContentView(R.layout.edition);
 		etxt_for_title = (EditText) findViewById(R.id.etxt_for_title);
 		EditText etxt_for_auteur = (EditText) findViewById(R.id.etxt_for_auteur);
-		TextView txt_creez_votre_quiz = (TextView) findViewById(R.id.txt_creez_votre_quiz);
-		Button btn_submit_in_create = (Button) findViewById(R.id.btn_submit_in_create);
+		//TextView txt_creez_votre_quiz = (TextView) findViewById(R.id.txt_creez_votre_quiz);
+		//Button btn_submit_in_create = (Button) findViewById(R.id.btn_submit_in_create);
 
 		etxt_for_auteur.setVisibility(View.INVISIBLE);
 		etxt_for_title.setHint("Entrez l'auteur du quiz:");
-		txt_creez_votre_quiz.setText("Recherche:");
-		btn_submit_in_create.setText("Rechercher");
+		//txt_creez_votre_quiz.setText("Recherche:");
+		//btn_submit_in_create.setText("Rechercher");
 
 	}
 	

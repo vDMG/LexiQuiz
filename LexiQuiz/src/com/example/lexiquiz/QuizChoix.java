@@ -8,6 +8,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.Bitmap.Config;
+import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -60,6 +67,8 @@ public class QuizChoix extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.quiz_choix);
 		
+		setTitle("Liste des Lexiquiz");
+		
 		SimpleAdapter adapter = null;
 		
 		java.text.DecimalFormat df = new java.text.DecimalFormat("0.##");
@@ -77,7 +86,9 @@ public class QuizChoix extends Activity {
 				Bitmap bitMapImage = BitmapFactory.decodeByteArray(
 						quiz.getIcon(), 0,
 						quiz.getIcon().length);
-				BitmapDrawable img = new BitmapDrawable(getResources(), bitMapImage);
+				
+				BitmapDrawable img = new BitmapDrawable(getResources(), getRoundedCornerBitmap(bitMapImage));
+				
 				hm.put("img", img);				
 				
 				hm.put("id", "" + quiz.getId());
@@ -112,6 +123,29 @@ public class QuizChoix extends Activity {
 			};
 			listQuiz.setOnItemClickListener(itemClickListener);
 		}
+	}
+	
+	public static Bitmap getRoundedCornerBitmap(Bitmap bitmap) {
+	    Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap
+	            .getHeight(), Config.ARGB_8888);
+	    Canvas canvas = new Canvas(output);
+
+	    final int color = 0xff4242DB;
+	    final Paint paint = new Paint();
+	    final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+	    final RectF rectF = new RectF(rect);
+	    final float roundPx = bitmap.getWidth()/2;
+
+	    paint.setAntiAlias(true);
+	    canvas.drawARGB(0, 0, 0, 0);
+	    paint.setColor(color);
+	    canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+
+	    paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
+	        //canvas.drawCircle(0, 0, bitmap.getWidth(), paint);
+	    canvas.drawBitmap(bitmap, rect, rect, paint);
+
+	    return output;
 	}
 	
 }

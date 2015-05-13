@@ -39,8 +39,8 @@
     <string name="remove_question"> Supprimer une question </string>
     <string name="Chargement_splashScreen"> Chargement&#8230; </string>
     <string name="title_activity_before_create_ask">LexiQuiz</string>
-    <string name="hint_for_etxt_title"> Titre du quiz </string>
-    <string name="hint_for_etxt_auteur"> Auteur du quiz </string>
+    <string name="hint_for_etxt_title"> Titre</string>
+    <string name="hint_for_etxt_auteur"> Auteur</string>
     <string name="description_in_menu"> Quiz </string>
     <string name="upload_for_icon"> Charger </string>
     <string name="modify_quiz">Gérer vos quiz</string>
@@ -54,9 +54,25 @@
     <string name='uploading_quiz'>Envoie du quiz</string>
     <string name='downloading_quiz'>Téléchargement du quiz</string>
     
+    <!-- TEXTVIEW -->
+    	<!-- Création d'un quiz -->
+    	<string name='info_createquiz'>Veuillez renseigner un titre, un auteur et une icône</string>
+        <!-- Taille d'icône -->
+    	<string name='info_oversize'>ERREUR : icône trop grande</string>
+    	<!-- Avant le lancement d'un quiz -->
+    	<string name='info_quiz_description'>(Aucune description)</string>
+    	<string name='info_quiz_author'>(Aucun auteur)</string>
+    
+    <!-- TOAST -->
+    	<!-- Création d'un quiz -->
+    	<string name='done_createquiz'>Quiz créé avec succès</string>
+    	
     <!-- ACTION BAR -->
+    	<!-- Liste des quiz sur l'appareil -->
     <string name ='action_createquiz'>Créer un quiz</string>
     <string name ='action_downloadquiz'>Télécharger un quiz</string>
+    	<!-- Création -->
+    <string name ='action_validation'>Valider</string>
     
     <style name="ButtonText">
 	    <item name="android:layout_width">fill_parent</item>
